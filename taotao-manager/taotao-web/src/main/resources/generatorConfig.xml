@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="/Users/wumiaogong/taotaogongjubao/repository/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar" />
+    <context id="context1" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/taotaoDB?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root" password="root" />
+        <javaModelGenerator targetPackage="com.taotao.pojo"
+                            targetProject="/Users/wumiaogong/taotaotao/taotao-manager/taotao-pojo/src/main/java" />
+        <sqlMapGenerator targetPackage="resource"
+                         targetProject="/Users/wumiaogong/taotaotao/taotao-manager/taotao-web/src/main/resources" />
+        <javaClientGenerator targetPackage="com.taotao.mapper"
+            targetProject="/Users/wumiaogong/taotaotao/taotao-manager/taotao-mapper/src/main/java" type="XMLMAPPER" />
+        <table schema="taotaoDB" tableName="tb_item_cat" />
+    </context>
+</generatorConfiguration>
