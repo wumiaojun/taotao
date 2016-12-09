@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.taotao.mapper.TbItemCatMapper" >
-  <resultMap id="BaseResultMap" type="com.taotao.pojo.TbItemCat" >
+<mapper namespace="com.taotao.mapper.TbContentCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.taotao.pojo.TbContentCategory" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="parent_id" property="parentId" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -17,23 +17,23 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from tb_item_cat
+    from tb_content_category
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tb_item_cat
+    delete from tb_content_category
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.taotao.pojo.TbItemCat" >
-    insert into tb_item_cat (id, parent_id, name, 
+  <insert id="insert" parameterType="com.taotao.pojo.TbContentCategory" >
+    insert into tb_content_category (id, parent_id, name, 
       status, sort_order, is_parent, 
       created, updated)
     values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{isParent,jdbcType=BIT}, 
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.taotao.pojo.TbItemCat" >
-    insert into tb_item_cat
+  <insert id="insertSelective" parameterType="com.taotao.pojo.TbContentCategory" >
+    insert into tb_content_category
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -87,8 +87,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.taotao.pojo.TbItemCat" >
-    update tb_item_cat
+  <update id="updateByPrimaryKeySelective" parameterType="com.taotao.pojo.TbContentCategory" >
+    update tb_content_category
     <set >
       <if test="parentId != null" >
         parent_id = #{parentId,jdbcType=BIGINT},
@@ -114,8 +114,8 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.taotao.pojo.TbItemCat" >
-    update tb_item_cat
+  <update id="updateByPrimaryKey" parameterType="com.taotao.pojo.TbContentCategory" >
+    update tb_content_category
     set parent_id = #{parentId,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},

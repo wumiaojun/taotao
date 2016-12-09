@@ -11,7 +11,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath*:spring/applicationContext-*.xml
+            classpath*:spring/*.xml
         </param-value>
     </context-param>
     <!--为了换logback.xml的默认路径添加的listentner-->
@@ -19,14 +19,15 @@
         <param-name>logbackConfigLocation</param-name>
         <param-value>classpath:logbacklog/logback.xml</param-value>
     </context-param>
-    <listener>
-        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
-    </listener>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
     </listener>
 
     <!-- 解决post乱码 -->
@@ -53,14 +54,15 @@
         <servlet-name>taotao-web</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!-- contextConfigLocation不是必须的， 如果不配置contextConfigLocation， springmvc的配置文件默认在：WEB-INF/servlet的name+"-servlet.xml" -->
-        <!--<init-param>
+        <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath*:spring/springmvc.xml</param-value>
-        </init-param>-->
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>taotao-web</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

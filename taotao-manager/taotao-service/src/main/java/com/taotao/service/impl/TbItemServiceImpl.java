@@ -19,4 +19,13 @@ public class TbItemServiceImpl implements TbItemService {
         TbItem tbItem = tbItemMapper.selectByPrimaryKey(itemId);
         return tbItem;
     }
+
+    /*public List<TbItem> getList(){
+        PageHelper.startPage(1, 10);
+
+        //紧跟着的第一个select方法会被分页
+        List<Country> list = countryMapper.selectIf(1);
+        PageInfo page = new PageInfo(list);
+
+    }*/
 }
