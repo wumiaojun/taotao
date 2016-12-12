@@ -74,7 +74,7 @@ var TT = TAOTAO = {
     		// 回显图片
         	if(data && data.pics){
         		var imgs = data.pics.split(",");
-        		for(var i in imgs){
+					for(var i in imgs){
         			if($.trim(imgs[i]).length > 0){
         				_ele.siblings(".pics").find("ul").append("<li><a href='"+imgs[i]+"' target='_blank'><img src='"+imgs[i]+"' width='80' height='50' /></a></li>");
         			}

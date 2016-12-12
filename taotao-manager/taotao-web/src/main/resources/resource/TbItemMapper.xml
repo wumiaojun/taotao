@@ -160,4 +160,53 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="getListByCondition" parameterType="Object" resultType="com.taotao.pojo.TbItem">
+    select
+    <include refid="Base_Column_List" />
+    from tb_item where 1=1
+
+      <if test="list != null and !list.isEmpty" >
+        and cid in
+        <foreach item="item" index="index" collection="list"
+                 open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+
+  </select>
+
+  <select id="getList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_item
+  </select>
+
+  <select id="getItemList" resultMap="BaseResultMap" parameterType="com.taotao.pojo.Condition">
+    select
+    <include refid="Base_Column_List" />
+    from tb_item where 1=1
+    order by created desc
+    <if test="beginRow != null and endRow != null " >
+      limit #{beginRow},#{endRow}
+    </if>
+
+  </select>
+
+
+  <select id="getItemCount"  resultType="java.lang.Integer">
+    select count(1) from tb_item
+  </select>
+
+  <select id="getItemById" resultType="com.taotao.pojo.TbItem" parameterType="java.lang.Long">
+    select
+    <include refid="Base_Column_List" />
+    from tb_item where 1=1
+    <if test="itemId != null" >
+     and id= #{itemId,jdbcType=BIGINT},
+    </if>
+    order by created desc
+  </select>
+
+
 </mapper>

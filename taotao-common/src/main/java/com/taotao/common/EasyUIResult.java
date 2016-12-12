@@ -10,6 +10,15 @@ public class EasyUIResult {
     private Integer total;
 
     private List<?> rows;
+    public EasyUIResult(Integer total, List<?> rows) {
+        this.total = total;
+        this.rows = rows;
+    }
+
+    public EasyUIResult(Long total, List<?> rows) {
+        this.total = total.intValue();
+        this.rows = rows;
+    }
 
     public Integer getTotal() {
         return total;

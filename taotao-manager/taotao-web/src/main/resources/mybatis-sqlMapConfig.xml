@@ -8,6 +8,9 @@
             <!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
             <property name="dialect" value="mysql"/>
         </plugin>
+        <plugin interceptor="com.taotao.controller.bo.SqlInterceptor">
+        </plugin>
+
     </plugins>
 
 
