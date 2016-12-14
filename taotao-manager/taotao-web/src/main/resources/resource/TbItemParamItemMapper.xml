@@ -6,12 +6,13 @@
     <result column="item_id" property="itemId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="param_data" property="paramData" jdbcType="LONGVARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.taotao.pojo.TbItemParamItem" extends="BaseResultMap" >
     <result column="param_data" property="paramData" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, item_id, created, updated
+    id, item_id, created, updated,param_data
   </sql>
   <sql id="Blob_Column_List" >
     param_data
@@ -97,6 +98,7 @@
       param_data = #{paramData,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.taotao.pojo.TbItemParamItem" >
     update tb_item_param_item
     set item_id = #{itemId,jdbcType=BIGINT},
@@ -104,4 +106,10 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="getItemParamByItemId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+   select <include refid="Blob_Column_List" />
+    from tb_item_param_item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.taotao.mapper;
 
 import com.taotao.pojo.TbItemParam;
 
+import java.util.List;
+
 public interface TbItemParamMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -16,4 +18,6 @@ public interface TbItemParamMapper {
     int updateByPrimaryKeyWithBLOBs(TbItemParam record);
 
     int updateByPrimaryKey(TbItemParam record);
+
+    List<TbItemParam> getItemParamByCid(long cid);
 }
