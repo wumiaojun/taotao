@@ -11,7 +11,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath*:spring/*.xml
+            classpath*:spring/*.xml,classpath*:schedule.xml
         </param-value>
     </context-param>
     <!--为了换logback.xml的默认路径添加的listentner-->
